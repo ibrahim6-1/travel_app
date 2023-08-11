@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
+import '../page/place_page.dart';
+
 class SwiperComponent extends StatelessWidget {
   const SwiperComponent({super.key});
 
@@ -11,7 +13,15 @@ class SwiperComponent extends StatelessWidget {
     Size _size = MediaQuery.of(context).size;
     return Swiper(
       onTap: (index) {
-        print("tab $index");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (contex) => PlacePage(
+              index: index,
+            ),
+            fullscreenDialog: true
+          ),
+        );
       },
       itemCount: _itemCount,
       itemHeight: _size.height / 1.8,
